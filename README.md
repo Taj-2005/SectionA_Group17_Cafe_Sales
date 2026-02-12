@@ -4,9 +4,9 @@
 
 ## 👥 Team Identity
 
-**Team Number:** Team 17
-**Sector Chosen:** Food & Beverage Analytics
-**Project Lead:** Shaik Tajuddin
+**Team Number:** Team 17<br>
+**Sector Chosen:** Food & Beverage Analytics<br>
+**Project Lead:** Shaik Tajuddin<br>
 **Project Lead Email:** shaik.tajuddin2024@nst.rishihood.edu.in
 
 ---
