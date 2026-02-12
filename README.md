@@ -184,5 +184,5 @@ shaik.tajuddin2024@nst.rishihood.edu.in
 
 ---
 
-**Section A – Group 17**
+**Section A – Group 17**<br>
 Food & Beverage Analytics
