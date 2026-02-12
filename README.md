@@ -1,14 +1,23 @@
 # ☕ Food & Beverage Analytics Dashboard
 
-## Team 17 – Section A
+## Group 17 – Section A
 
 ## 👥 Team Identity
 
-**Team Number:** Team 17<br>
 **Sector Chosen:** Food & Beverage Analytics<br>
 **Project Lead:** Shaik Tajuddin<br>
 **Project Lead Email:** shaik.tajuddin2024@nst.rishihood.edu.in
+## 👨‍💻 Team Members
 
+
+| Name            | Role               | GitHub ID                             |
+| --------------- | ------------------ | ------------------------------------- |
+| Shaik Tajuddin  | Project Lead       | https://github.com/Taj-2005           |
+| Debashish Karan | Data Lead          | https://github.com/DebasishKaran-1    |
+| Akshat Chauhan  | Analysis Lead      | https://github.com/acboss1346         |
+| Parthraj Singh  | Dashboard Lead     | https://github.com/parthrajsinghbhati |
+| Pankaj Baid     | Strategy Lead      | https://github.com/pankajbaid567      |
+| Krishna Verma   | PPT & Quality Lead | https://github.com/krishnaverma09     |
 ---
 
 ## 📌 Executive Summary
@@ -148,20 +157,6 @@ The final dashboard includes:
 
 ---
 
-## 👨‍💻 Team Members
-
-
-| Name            | Role               | GitHub ID                             |
-| --------------- | ------------------ | ------------------------------------- |
-| Shaik Tajuddin  | Project Lead       | https://github.com/Taj-2005           |
-| Debashish Karan | Data Lead          | https://github.com/DebasishKaran-1    |
-| Akshat Chauhan  | Analysis Lead      | https://github.com/acboss1346         |
-| Parthraj Singh  | Dashboard Lead     | https://github.com/parthrajsinghbhati |
-| Pankaj Baid     | Strategy Lead      | https://github.com/pankajbaid567      |
-| Krishna Verma   | PPT & Quality Lead | https://github.com/krishnaverma09     |
-
----
-
 ## 🛠 Tools & Technologies
 
 - Google Sheets
@@ -189,6 +184,5 @@ shaik.tajuddin2024@nst.rishihood.edu.in
 
 ---
 
-**Section A – Group 7**
-Team 17
+**Section A – Group 17**
 Food & Beverage Analytics
