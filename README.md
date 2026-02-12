@@ -34,13 +34,13 @@ The final output supports business decisions related to menu optimization, prici
 
 ## 📂 Dataset Information
 
-**Source Platform:** Kaggle
-**Dataset Name:** Cafe Sales – Dirty Data for Cleaning Training
+**Source Platform:** Kaggle<br>
+**Dataset Name:** Cafe Sales – Dirty Data for Cleaning Training<br>
 **Direct Link:**
 https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training
-
-**File Format:** CSV
-**Rows:** ~10,000
+<br>
+**File Format:** CSV<br>
+**Rows:** ~10,000<br>
 **Columns:** 8
 
 ### ✅ Dataset Validation
