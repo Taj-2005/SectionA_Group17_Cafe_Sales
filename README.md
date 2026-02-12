@@ -2,7 +2,7 @@
 
 ## Group 17 – Section A
 
-## 👥 Team Identity
+## Team Identity
 
 **Sector Chosen:** Food & Beverage Analytics<br>
 **Project Lead:** Shaik Tajuddin<br>
@@ -124,7 +124,7 @@ Project Root
 
 ---
 
-## 🧹 Data Cleaning Process
+## Data Cleaning Process
 
 The dataset contains:
 
@@ -145,7 +145,7 @@ All cleaning steps are documented in `CleanedDataset/cleaned.md`.
 
 ---
 
-## 📊 Dashboard Deliverables
+## Dashboard Deliverables
 
 The final dashboard includes:
 
