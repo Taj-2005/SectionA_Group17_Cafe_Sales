@@ -54,11 +54,11 @@ https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-clean
 
 ### Dataset Validation
 
-✅ Tabular and row-level data
-✅ Opens in Google Sheets
-✅ Raw / minimally processed
-✅ Contains missing or inconsistent values
-✅ Requires cleaning and standardization
+✅ Tabular and row-level data<br>
+✅ Opens in Google Sheets<br>
+✅ Raw / minimally processed<br>
+✅ Contains missing or inconsistent values<br>
+✅ Requires cleaning and standardization<br>
 ✅ Suitable for KPI and dashboard analysis
 
 ---
