@@ -7,7 +7,7 @@
 **Sector Chosen:** Food & Beverage Analytics<br>
 **Project Lead:** Shaik Tajuddin<br>
 **Project Lead Email:** shaik.tajuddin2024@nst.rishihood.edu.in
-## 👨‍💻 Team Members
+## Team Members
 
 
 | Name            | Role               | GitHub ID                             |
@@ -20,7 +20,7 @@
 | Krishna Verma   | PPT & Quality Lead | https://github.com/krishnaverma09     |
 ---
 
-## 📌 Executive Summary
+## Executive Summary
 
 Cafes generate daily transactional data including item sales, quantities, timestamps, and payment details. However, operational datasets are often messy — containing missing values, inconsistent formats, and data entry errors.
 
@@ -35,7 +35,7 @@ The final output supports business decisions related to menu optimization, prici
 
 ---
 
-## 🎯 Problem Statement
+## Problem Statement
 
 **How do item performance, payment preferences, and time-based sales trends impact overall cafe revenue, and which factors drive peak sales periods?**
 
@@ -52,14 +52,14 @@ https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-clean
 **Rows:** ~10,000<br>
 **Columns:** 8
 
-### ✅ Dataset Validation
+### Dataset Validation
 
-- ✔ Tabular and row-level data
-- ✔ Opens in Google Sheets
-- ✔ Raw / minimally processed
-- ✔ Contains missing or inconsistent values
-- ✔ Requires cleaning and standardization
-- ✔ Suitable for KPI and dashboard analysis
+✅ Tabular and row-level data
+✅ Opens in Google Sheets
+✅ Raw / minimally processed
+✅ Contains missing or inconsistent values
+✅ Requires cleaning and standardization
+✅ Suitable for KPI and dashboard analysis
 
 ---
 
