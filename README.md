@@ -1,4 +1,4 @@
-# ☕ Food & Beverage Analytics Dashboard
+# Food & Beverage Analytics Dashboard
 
 ## Group 17 – Section A
 
