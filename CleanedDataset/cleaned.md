@@ -1,258 +1,237 @@
-**Data** **Cleaning** **Documentation**
+# Transaction Dataset — Data Cleaning & Quality Assurance Report
+**Project:** Capstone G17 Analytics  
+**Dataset Type:** Retail Transactional Records  
+**Prepared For:** Business Intelligence & Dashboarding  
+**Prepared By:** Data Engineering & Analytics Team  
 
-**Capstone** **G17** **Transaction** **Dataset** **Dataset**
+---
 
-**1.** **Objective**
+## 1. Purpose of This Document
+This document describes the complete data quality improvement and preprocessing performed on the raw transaction dataset prior to analytics consumption.
 
-The primary objective of this data cleaning process was to transform the
-raw transactional dataset into a reliable, consistent, and
-analysis-ready format suitable for business intelligence and dashboard
-development.
+The goal of the cleaning process was to:
 
-The original dataset contained approximately 10,000 transaction records.
-However, it included multiple data quality issues such as missing
-values, inconsistent formatting, invalid numeric entries, placeholder
-values, and duplicate records. These issues could negatively impact
-analytical accuracy, distort key performance indicators (KPIs), and lead
-to incorrect business insights.
+- Ensure **accuracy of financial metrics**
+- Enable **reliable KPI computation**
+- Prevent misleading business insights
+- Prepare data for **BI dashboards & reporting pipelines**
+- Maintain maximum usable data without introducing bias
 
-The cleaning process focused on improving data integrity, ensuring
-logical consistency, and preserving maximum valid data while removing or
-correcting corrupted records.
+This documentation ensures **reproducibility, auditability, and transparency**.
 
-**2.** **Column** **Name** **Standardization**
+---
 
-Column names were standardized to ensure structural consistency and
-compatibility with analytical workflows.
+## 2. Dataset Overview
 
-Issues observed included inconsistent naming formats, mixed
-capitalization, and spaces in column names. These inconsistencies can
-cause errors during data processing and make data handling inefficient.
+| Property | Value |
+|--------|------|
+| Raw Records | ~10,000 transactions |
+| Cleaned Records | 6,658 transactions |
+| Domain | Retail / Cafe POS |
+| Primary Metrics | Revenue, Quantity Sold, Payment Behavior |
+| Intended Usage | KPI dashboards, time-series analytics, customer behavior analysis |
 
-Column names were standardized using the following principles:
+---
 
-> ● Converted all names to lowercase
->
-> ● Removed unnecessary spaces
->
-> ● Used underscores for separation
+## 3. Data Quality Issues Identified
 
-This ensured uniform naming conventions and improved usability for
-analysis and visualization.
+| Category | Issues Found |
+|--------|------|
+| Structural | Inconsistent column names |
+| Categorical | Whitespace, unknown labels, placeholder values |
+| Numeric | Missing, zero, and invalid values |
+| Financial | Incorrect revenue calculations |
+| Temporal | Invalid date formats |
+| Logical | Impossible transactions |
+| Duplicates | Repeated entries |
+| Null Handling | Missing categorical and numeric values |
 
-**3.** **Removal** **of** **Whitespace** **and** **Text**
-**Normalization**
+---
 
-Several categorical fields, including item, payment_method, and
-location, contained leading and trailing whitespace.
+## 4. Cleaning Methodology
+**Ingestion → Standardization → Validation → Correction → Filtering → Verification**
 
-Whitespace inconsistencies can result in the same category being
-interpreted as multiple distinct values, leading to incorrect
-aggregation and misleading analytical results.
+---
 
-For example:
+## 5. Column Name Standardization
 
-> ● "Cash" and " Cash " would be treated as different categories
+### Problem
+Column names contained inconsistent casing and spacing, which breaks query engines and BI tools.
 
-Whitespace normalization ensured that categorical values were consistent
-and properly grouped during analysis.
+### Action Taken
+- Converted to lowercase
+- Removed spaces
+- Replaced spaces with underscores
 
-**4.** **Handling** **of** **Invalid** **Placeholder** **and**
-**Corrupted** **Values**
+| Before | After |
+|------|------|
+| `Payment Method` | `payment_method` |
+| `Price Per Unit` | `price_per_unit` |
 
-The dataset contained non-informative placeholder values such as:
+### Benefit
+Ensures compatibility with SQL, Python pipelines, and BI tools.
 
-> ● ERROR
->
-> ● Unknown
->
-> ● nan
->
-> ● null
+---
 
-These values do not represent valid business transactions and can
-disrupt categorical analysis and reporting.
+## 6. Text Normalization & Whitespace Removal
 
-These placeholders were systematically identified and replaced with
-valid
+### Problem
+Categorical values contained hidden whitespace:
 
-business-appropriate categories or removed where necessary. This ensured
-that all categorical fields represented meaningful and analyzable
-information.
+"Cash"
+" Cash "
+"cash"
 
-This step improved categorical data integrity and ensured accurate
-grouping and filtering.
 
-**5.** **Numeric** **Data** **Validation** **and** **Correction**
+### Action Taken
+- Trimmed whitespace
+- Standardized capitalization
 
-The quantity and price_per_unit fields are critical financial variables
-that directly influence revenue calculations.
+### Result
+Prevents incorrect aggregation and duplicate categories.
 
-Issues identified included:
+---
 
-> ● Missing numeric values
->
-> ● Improperly formatted numeric entries
->
-> ● Zero or invalid values
+## 7. Placeholder & Corrupted Value Handling
 
-To preserve valid records and maintain statistical consistency, missing
-numeric values were handled using appropriate imputation techniques
-rather than deleting entire records.
+### Invalid Entries
+- ERROR
+- Unknown
+- nan
+- null
 
-This ensured:
+### Strategy
 
-> ● Logical completeness of financial data
->
-> ● Prevention of calculation errors
->
-> ● Preservation of dataset size and analytical coverage
+| Field Type | Action |
+|----------|------|
+| Categorical | Distribution-based replacement |
+| Critical fields | Removed if unrecoverable |
 
-Ensuring numeric integrity is essential for accurate revenue analysis
-and KPI computation.
+### Reason
+Placeholder values do not represent real transactions and distort analysis.
 
-**6.** **Revenue** **Consistency** **and** **Recalculation**
+---
 
-The total_spent field represents transaction revenue and must logically
-align with quantity and price_per_unit.
+## 8. Numeric Validation & Imputation
 
-Data inconsistencies were identified where revenue values did not
-correctly correspond with the associated quantity and unit price.
+### Affected Fields
+- quantity
+- price_per_unit
 
-To ensure financial accuracy, revenue values were recalculated based on
-validated quantity and price values.
+### Issues
+- Missing values
+- Zero values
+- Non-numeric entries
 
-This ensured:
+### Approach
+- Imputed realistic values
+- Preserved valid transactions
 
-> ● Financial consistency across all transactions
->
-> ● Accurate total revenue calculation
->
-> ● Reliable KPI and performance metrics
+### Importance
+Prevents biased revenue and product demand metrics.
 
-This step was critical to maintaining financial data integrity.
+---
 
-**7.** **Handling** **Missing** **Categorical** **Values**
+## 9. Revenue Recalculation
 
-Categorical fields such as location and payment_method contained missing
-entries.
+### Rule
+total_spent = quantity × price_per_unit
 
-Instead of removing these records entirely, missing categorical values
-were replaced with valid existing categories based on realistic business
-distribution.
 
-This approach was selected because:
+### Action
+Recalculated all revenue values after numeric validation.
 
-> ● The transaction itself remained valid
->
-> ● Only categorical classification was missing
->
-> ● Removing such records would unnecessarily reduce dataset size
+### Impact
+Ensures financial KPI accuracy.
 
-This method preserved valuable transactional data while maintaining
-categorical consistency.
+---
 
-**8.** **Removal** **of** **Logically** **Invalid** **Records**
+## 10. Handling Missing Categorical Values
 
-Certain records contained logically impossible values, such as:
+### Columns
+- location
+- payment_method
 
-> ● Quantity equal to zero
->
-> ● Price per unit equal to zero or negative
+### Strategy
+Distribution-based replacement using realistic business proportions.
 
-These values do not represent valid business transactions and could
-distort revenue calculations and analytical outcomes.
+### Justification
+Transaction valid — classification missing.
 
-Such records were removed to ensure that the dataset reflected only
-legitimate and meaningful transactions.
+---
 
-This step ensured logical validity and analytical accuracy.
+## 11. Removal of Logically Impossible Records
 
-**9.** **Standardization** **of** **Date** **Format**
+Removed records where:
 
-The transaction_date field contained inconsistent and improperly
-formatted date values.
+- Quantity ≤ 0
+- Price ≤ 0
 
-Date standardization ensured that all transaction dates were recognized
-as valid date-time values, enabling accurate time-based analysis such
-as:
+These represent system errors rather than transactions.
 
-> ● Monthly sales trends
->
-> ● Year-wise performance analysis
->
-> ● Seasonal and temporal insights
+---
 
-Proper date formatting is essential for time-series analysis and
-business reporting.
+## 12. Date Standardization
 
-**10.** **Duplicate** **Record** **Identification** **and** **Removal**
+Converted all dates into a consistent datetime format.
 
-Duplicate transaction records were identified within the dataset.
+### Enabled Analytics
+- Monthly trends
+- Seasonal analysis
+- Yearly performance
 
-Duplicate records can significantly distort analysis by:
+---
 
-> ● Inflating revenue calculations
->
-> ● Increasing transaction counts artificially
->
-> ● Creating inaccurate business metrics
+## 13. Duplicate Detection
+Removed exact duplicate transactions.
 
-Duplicate entries were removed to ensure that each transaction was
-uniquely represented.
+### Prevents
+- Revenue inflation
+- Incorrect transaction counts
 
-This ensured transactional integrity and analytical reliability.
+---
 
-**11.** **Final** **Data** **Validation** **and** **Quality**
-**Assurance**
+## 14. Final Validation
 
-Following the cleaning process, the dataset underwent comprehensive
-validation to ensure:
+| Check | Status |
+|------|------|
+| Null critical fields | Passed |
+| Placeholder values | Removed |
+| Financial correctness | Verified |
+| Logical constraints | Enforced |
+| Duplicate records | Removed |
+| Date format | Standardized |
 
-> ● No invalid placeholder values remained
->
-> ● No missing or blank critical fields existed
->
-> ● All numeric values were logically valid
->
-> ● Categorical values were consistent
->
-> ● No duplicate records remained
->
-> ● Revenue values were accurate and consistent
+---
 
-This validation ensured high data quality and analytical readiness.
+## 15. Final Output
 
-**12.** **Final** **Outcome**
+| Metric | Value |
+|------|------|
+| Valid Transactions | **6,658** |
+| Data Quality | Production-ready |
+| BI Compatibility | Yes |
+| KPI Reliability | High |
 
-The data cleaning process significantly improved the overall quality,
-consistency, and reliability of the dataset.
+---
 
-Key improvements achieved:
+## 16. Business Impact
 
-> ● Removal of invalid and corrupted records
->
-> ● Correction of numeric and financial inconsistencies
->
-> ● Standardization of categorical and date values
->
-> ● Elimination of duplicate transactions
->
-> ● Preservation of valid transactional data
+After cleaning:
 
-The final cleaned dataset contains 6,658 valid transaction records and
-is fully prepared for business analysis, dashboard creation, and KPI
-reporting.
+- Revenue KPIs became accurate
+- Payment behavior segmentation reliable
+- Product performance trustworthy
+- Time-series trends analyzable
 
-**13.** **Conclusion**
+---
 
-Through systematic data cleaning and validation, the dataset was
-transformed from a raw, inconsistent state into a structured and
-reliable analytical dataset.
+## 17. Conclusion
+The dataset was transformed from a raw operational export into an analytics-grade dataset through systematic validation and correction.
 
-The cleaning process ensured data integrity, financial accuracy, and
-analytical consistency, enabling accurate business insights and reliable
-decision-making.
+This dataset is now suitable for dashboards, reporting, and advanced analytics.
 
-The dataset is now fully suitable for advanced analysis, visualization,
-and business intelligence applications.
+---
+
+## 18. Reproducibility
+All transformations were rule-based and deterministic. Running the pipeline again on the raw dataset will produce identical results.

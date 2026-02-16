@@ -1,188 +1,150 @@
 # Food & Beverage Analytics Dashboard
-
-## Group 17 – Section A
-
-## Team Identity
-
-**Sector Chosen:** Food & Beverage Analytics<br>
-**Project Lead:** Shaik Tajuddin<br>
-**Project Lead Email:** shaik.tajuddin2024@nst.rishihood.edu.in
-## Team Members
-
-
-| Name            | Role               | GitHub ID                             |
-| --------------- | ------------------ | ------------------------------------- |
-| Shaik Tajuddin  | Project Lead       | https://github.com/Taj-2005           |
-| Debashish Karan | Data Lead          | https://github.com/DebasishKaran-1    |
-| Akshat Chauhan  | Analysis Lead      | https://github.com/acboss1346         |
-| Parthraj Singh  | Dashboard Lead     | https://github.com/parthrajsinghbhati |
-| Pankaj Baid     | Strategy Lead      | https://github.com/pankajbaid567      |
-| Krishna Verma   | PPT & Quality Lead | https://github.com/krishnaverma09     |
----
-
-## Executive Summary
-
-Cafes generate daily transactional data including item sales, quantities, timestamps, and payment details. However, operational datasets are often messy — containing missing values, inconsistent formats, and data entry errors.
-
-This project focuses on cleaning and analyzing raw cafe sales data to build a performance dashboard that provides actionable insights on:
-
-- Revenue trends
-- Item performance
-- Customer purchase behavior
-- Payment preferences
-
-The final output supports business decisions related to menu optimization, pricing strategy, staffing, and operational planning.
+### Retail Transaction Intelligence | Business Analytics Project
 
 ---
 
-## Problem Statement
+## Project Overview
+Operational sales data in food & beverage businesses is often exported directly from POS systems and contains inconsistencies such as missing values, incorrect revenue calculations, duplicate transactions, and inconsistent formats.
 
-**How do item performance, payment preferences, and time-based sales trends impact overall cafe revenue, and which factors drive peak sales periods?**
+This project converts a **raw cafe transaction dataset** into an **analytics-grade dataset** and builds a dashboard to uncover business insights related to revenue drivers, customer behavior, and operational performance.
+
+The outcome is a decision-support dashboard enabling data-driven improvements in pricing, menu design, staffing, and payment strategy.
 
 ---
 
-## 📂 Dataset Information
+## Business Problem
+**Which factors most influence cafe revenue, and how do item demand, payment behavior, and time patterns drive peak sales performance?**
 
-**Source Platform:** Kaggle<br>
-**Dataset Name:** Cafe Sales – Dirty Data for Cleaning Training<br>
-**Direct Link:**
+---
+
+## Team – Group 17 (Section A)
+
+| Name | Responsibility | GitHub |
+|------|------|------|
+| Shaik Tajuddin | Project Lead | https://github.com/Taj-2005 |
+| Debashish Karan | Data Engineering | https://github.com/DebasishKaran-1 |
+| Akshat Chauhan | Data Analysis | https://github.com/acboss1346 |
+| Parthraj Singh | Dashboard Development | https://github.com/parthrajsinghbhati |
+| Pankaj Baid | Business Strategy | https://github.com/pankajbaid567 |
+| Krishna Verma | Quality Assurance & Documentation | https://github.com/krishnaverma09 |
+
+---
+
+## 📂 Dataset
+
+**Source:** Kaggle  
+**Dataset:** Cafe Sales – Dirty Data for Cleaning Training  
 https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training
-<br>
-**File Format:** CSV<br>
-**Rows:** ~10,000<br>
-**Columns:** 8
 
-### Dataset Validation
-
-✅ Tabular and row-level data<br>
-✅ Opens in Google Sheets<br>
-✅ Raw / minimally processed<br>
-✅ Contains missing or inconsistent values<br>
-✅ Requires cleaning and standardization<br>
-✅ Suitable for KPI and dashboard analysis
+| Property | Details |
+|------|------|
+| Records | ~10,000 |
+| Columns | 8 |
+| Format | CSV |
+| Data Type | Transaction-level POS export |
+| Condition | Raw / Uncleaned |
 
 ---
 
-## 🗂 Project Folder Structure
+## Data Preparation
 
-```
+The raw dataset contained real-world operational issues:
+
+- Missing values
+- Incorrect revenue calculations
+- Invalid numeric entries
+- Duplicate transactions
+- Inconsistent date formats
+- Categorical inconsistencies
+
+A structured cleaning pipeline was applied:
+
+1. Column standardization
+2. Text normalization
+3. Missing value handling
+4. Financial validation & recalculation
+5. Logical filtering
+6. Duplicate removal
+7. Date normalization
+
+📄 Detailed documentation:  
+`CleanedDataset/cleaned.md`
+
+---
+
+## Key Metrics (KPIs)
+
+- Total Revenue
+- Revenue Share by Payment Method
+- Average Transaction Value (ATV)
+- Item Performance Ranking
+- Shopping Mode Revenue (Online vs In-Store)
+- Monthly Sales Trends
+
+---
+
+## Insights Generated
+
+The dashboard identifies:
+
+- High revenue-contributing products (Pareto behavior)
+- Peak demand periods
+- Customer payment preferences
+- Transaction value patterns by payment type
+- Operational demand cycles
+
+---
+
+## 🗂 Repository Structure
+
 Project Root
 │
 ├── RawDataset/
-│     └── dataset.csv
+│ └── dataset.csv
 │
 ├── CleanedDataset/
-│     ├── cleaned.csv
-│     └── cleaned.md
+│ ├── cleaned.csv
+│ └── cleaned.md
 │
 ├── Calculations_PivotTables/
-│     └── calculation.csv
+│ └── calculation.csv
 │
 ├── Dashboard/
-│     └── dashboard.pdf
+│ └── dashboard.pdf
 │
 ├── Presentation/
-│     └── presentation.pdf
+│ └── presentation.pdf
 │
 ├── Documentation/
-│     └── documentation.pdf
+│ └── documentation.pdf
 │
 └── README.md
-```
+
 
 ---
 
-## 📊 Analytics Intent
-
-### Key Columns Used
-
-- Transaction Date
-- Item
-- Quantity
-- Total Spent
-- Payment Method
-- Price Per Unit
+## Tech Stack
+- Google Sheets (Data Processing & Pivot Analysis)
+- GitHub (Version Control & Collaboration)
 
 ---
 
-## 📈 Proposed KPIs
-
-1. Total Revenue (Year-wise)
-2. Revenue Share by Payment Method (Year-wise %)
-3. Average Transaction Value (ATV)
-4. Sales by Item
-5. Revenue by Mode of Shopping (Online vs In-store)
-
----
-
-## 🔍 Expected Insights
-
-- A small number of high-demand items contribute disproportionately to total revenue (Pareto effect).
-- Clear time-based sales patterns (monthly or hourly peaks).
-- Digital payments may dominate revenue share.
-- Certain payment methods may show higher average transaction values.
-
----
-
-## Data Cleaning Process
-
-The dataset contains:
-
-- Missing values
-- Inconsistent date formats
-- Duplicate records
-- Text inconsistencies
-
-Cleaning steps include:
-
-- Handling null values
-- Standardizing date formats
-- Validating numeric fields
-- Removing duplicates
-- Normalizing categorical variables
-
-All cleaning steps are documented in `CleanedDataset/cleaned.md`.
-
----
-
-## Dashboard Deliverables
-
-The final dashboard includes:
-
-- Revenue Trend Analysis
-- Payment Method Distribution
-- Top Performing Items
-- Monthly/Hourly Sales Patterns
-- Customer Purchase Insights
-
----
-
-## 🛠 Tools & Technologies
-
-- Google Sheets
-- GitHub (Version Control)
-
----
-
-## 🚀 Business Impact
-
-This project demonstrates how raw operational data can be transformed into structured insights that support:
+## Business Value
+This project demonstrates how cleaning and structuring operational data enables:
 
 - Revenue optimization
-- Menu strategy decisions
-- Inventory planning
-- Operational efficiency
+- Menu engineering decisions
+- Demand forecasting
+- Staffing planning
+- Payment strategy optimization
 
 ---
 
-## 📩 Contact
-
-For project-related queries:
-
-Shaik Tajuddin
+## Contact
+**Shaik Tajuddin**  
+Project Lead  
 shaik.tajuddin2024@nst.rishihood.edu.in
 
 ---
 
-**Section A – Group 17**<br>
-Food & Beverage Analytics
+**Food & Beverage Analytics — Group 17**
