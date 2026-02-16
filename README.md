@@ -350,6 +350,7 @@ Project Root
 │     └── data_cleaning_report.md
 │
 ├── Calculations_PivotTables/
+│     ├── calculations.md
 │     ├── monthly_revenue_summary.csv
 │     ├── product_performance_overview.csv
 │     ├── payment_method_revenue_summary.csv
@@ -358,8 +359,7 @@ Project Root
 │     ├── monthly_revenue_by_location.csv
 │     ├── monthly_revenue_by_payment_method.csv
 │     ├── location_revenue_by_payment_method.csv
-│     ├── item_revenue_by_payment_method.csv
-│     └── pivot_calculation_methodology.md
+│     └── item_revenue_by_payment_method.csv
 │
 ├── Dashboard/
 │     └── dashboard.pdf
@@ -372,6 +372,19 @@ Project Root
 │
 └── README.md
 ```
+
+---
+
+## 📊 Pivot Table Calculation Documentation
+
+A detailed explanation of how all pivot tables were created, including:
+- Fields used
+- Aggregation logic
+- KPI calculation methods
+- Business reasoning
+
+📄 **View Full Documentation:**  
+[Pivot Calculation Methodology](Calculations_PivotTables/calculations.md)
 
 ---
 
@@ -431,7 +444,7 @@ Running the cleaning pipeline on the raw dataset will produce **bit-identical re
 
 ### Audit Trail
 
-- All cleaning steps tracked in `data_cleaning_report.md`
+- All cleaning steps tracked in [data_cleaning_report.md](CleanedDataset/data_cleaning_report.md)
 - Original raw data preserved and versioned
 - Pivot table formulas visible for verification
 

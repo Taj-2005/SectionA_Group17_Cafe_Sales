@@ -1,4 +1,4 @@
-# 📊 Pivot Table Calculation Methodology
+# Pivot Table Calculation Methodology
 
 ## Monthly Revenue Summary
 
