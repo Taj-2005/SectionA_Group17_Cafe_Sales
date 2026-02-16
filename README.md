@@ -347,10 +347,19 @@ Project Root
 │
 ├── CleanedDataset/
 │     ├── cleaned.csv
-│     └── cleaned.md
+│     └── data_cleaning_report.md
 │
 ├── Calculations_PivotTables/
-│     └── calculation.csv
+│     ├── monthly_revenue_summary.csv
+│     ├── product_performance_overview.csv
+│     ├── payment_method_revenue_summary.csv
+│     ├── location_revenue_summary.csv
+│     ├── item_revenue_by_location.csv
+│     ├── monthly_revenue_by_location.csv
+│     ├── monthly_revenue_by_payment_method.csv
+│     ├── location_revenue_by_payment_method.csv
+│     ├── item_revenue_by_payment_method.csv
+│     └── pivot_calculation_methodology.md
 │
 ├── Dashboard/
 │     └── dashboard.pdf
