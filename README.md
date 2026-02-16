@@ -1,4 +1,4 @@
-# Food & Beverage Analytics Dashboard
+# Cafe Analytics Dashboard
 
 ### Enterprise-Grade Retail Intelligence | Data Visualization & Analytics Capstone Project
 
@@ -10,7 +10,7 @@
 
 ## Executive Summary
 
-This capstone project transforms **raw, unstructured Point-of-Sale (POS) data** from a food and beverage retail operation into an **actionable business intelligence dashboard**. Through systematic data engineering, rigorous quality assurance, and strategic visualization design, we deliver insights that drive revenue optimization, operational efficiency, and evidence-based decision-making.
+This capstone project transforms **raw, unstructured Point-of-Sale (POS) data** from a cafe retail operation into an **actionable business intelligence dashboard**. Through systematic data engineering, rigorous quality assurance, and strategic visualization design, we deliver insights that drive revenue optimization, operational efficiency, and evidence-based decision-making.
 
 **Core Achievement**: Converted 10,000 dirty transactional records into 6,658 analytics-grade records with 100% financial accuracy, enabling strategic KPI tracking and performance benchmarking.
 
@@ -20,7 +20,7 @@ This capstone project transforms **raw, unstructured Point-of-Sale (POS) data** 
 
 ### The Challenge
 
-Food and beverage operations generate massive volumes of transactional data, but raw POS exports are riddled with data quality issues that prevent reliable analytics:
+Cafe operations generate massive volumes of transactional data, but raw POS exports are riddled with data quality issues that prevent reliable analytics:
 
 - Revenue miscalculations due to corrupted price/quantity fields
 - Missing categorical values preventing customer behavior segmentation
@@ -58,14 +58,14 @@ This question guided our analytical framework and dashboard design, focusing on:
 ## Project Team – Group 17 (Section A)
 
 
-| Team Member         | Role                     | Contribution                                                             | GitHub Profile                                               |
-| ------------------- | ------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| Team Member         | Role                     | Contribution                                                                                                                                   | GitHub Profile                                               |
+| ------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | **Shaik Tajuddin**  | Project Lead & Architect | Project lead, repository creation & enhancement, documentation (README, reports), version control, GitHub management, deliverable coordination | [@Taj-2005](https://github.com/Taj-2005)                     |
-| **Debashish Karan** | Data Engineer            | ETL pipeline development, data validation, quality assurance             | [@DebasishKaran-1](https://github.com/DebasishKaran-1)       |
-| **Akshat Chauhan**  | Analytics Specialist     | Statistical analysis, KPI formulation, insight generation                | [@acboss1346](https://github.com/acboss1346)                 |
-| **Parthraj Singh**  | Visualization Lead       | Dashboard design, UI/UX optimization, chart selection                    | [@parthrajsinghbhati](https://github.com/parthrajsinghbhati) |
-| **Pankaj Baid**     | Business Strategist      | Market analysis, recommendation framework, business case                 | [@pankajbaid567](https://github.com/pankajbaid567)           |
-| **Krishna Verma**   | QA & Documentation       | Testing protocols, technical documentation                               | [@krishnaverma09](https://github.com/krishnaverma09)         |
+| **Debashish Karan** | Data Engineer            | ETL pipeline development, data validation, quality assurance                                                                                   | [@DebasishKaran-1](https://github.com/DebasishKaran-1)       |
+| **Akshat Chauhan**  | Analytics Specialist     | Statistical analysis, KPI formulation, insight generation                                                                                      | [@acboss1346](https://github.com/acboss1346)                 |
+| **Parthraj Singh**  | Visualization Lead       | Dashboard design, UI/UX optimization, chart selection                                                                                          | [@parthrajsinghbhati](https://github.com/parthrajsinghbhati) |
+| **Pankaj Baid**     | Business Strategist      | Market analysis, recommendation framework, business case                                                                                       | [@pankajbaid567](https://github.com/pankajbaid567)           |
+| **Krishna Verma**   | QA & Documentation       | Testing protocols, technical documentation                                                                                                     | [@krishnaverma09](https://github.com/krishnaverma09)         |
 
 ---
 
@@ -395,7 +395,7 @@ Prohibited:
 **Citation Format**:
 
 ```
-Food & Beverage Analytics Dashboard: Enterprise-Grade Retail Intelligence.
+Cafe Analytics Dashboard: Enterprise-Grade Retail Intelligence.
 Newton School of Technology Capstone Project, Group 17.
 https://github.com/Taj-2005/SectionA_Group17_Cafe_Sales
 ```
@@ -419,7 +419,7 @@ https://github.com/Taj-2005/SectionA_Group17_Cafe_Sales
 
 <div align="center">
 
-**Food & Beverage Analytics Dashboard**
+**Cafe Analytics Dashboard**
 _Transforming Data into Decisions_
 
 **Group 17 | Newton School of Technology | 2025**
