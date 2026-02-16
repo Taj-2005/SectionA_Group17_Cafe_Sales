@@ -57,14 +57,15 @@ This question guided our analytical framework and dashboard design, focusing on:
 
 ## Project Team – Group 17 (Section A)
 
-| Team Member         | Role                     | Contribution                                                     | GitHub Profile                                               |
-| ------------------- | ------------------------ | ---------------------------------------------------------------- | ------------------------------------------------------------ |
-| **Shaik Tajuddin**  | Project Lead & Architect | Strategic planning, stakeholder coordination, methodology design | [@Taj-2005](https://github.com/Taj-2005)                     |
-| **Debashish Karan** | Data Engineer            | ETL pipeline development, data validation, quality assurance     | [@DebasishKaran-1](https://github.com/DebasishKaran-1)       |
-| **Akshat Chauhan**  | Analytics Specialist     | Statistical analysis, KPI formulation, insight generation        | [@acboss1346](https://github.com/acboss1346)                 |
-| **Parthraj Singh**  | Visualization Lead       | Dashboard design, UI/UX optimization, chart selection            | [@parthrajsinghbhati](https://github.com/parthrajsinghbhati) |
-| **Pankaj Baid**     | Business Strategist      | Market analysis, recommendation framework, business case         | [@pankajbaid567](https://github.com/pankajbaid567)           |
-| **Krishna Verma**   | QA & Documentation       | Testing protocols, technical documentation, version control      | [@krishnaverma09](https://github.com/krishnaverma09)         |
+
+| Team Member         | Role                     | Contribution                                                             | GitHub Profile                                               |
+| ------------------- | ------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Shaik Tajuddin**  | Project Lead & Architect | Project lead, repository creation & enhancement, documentation (README, reports), version control, GitHub management, deliverable coordination | [@Taj-2005](https://github.com/Taj-2005)                     |
+| **Debashish Karan** | Data Engineer            | ETL pipeline development, data validation, quality assurance             | [@DebasishKaran-1](https://github.com/DebasishKaran-1)       |
+| **Akshat Chauhan**  | Analytics Specialist     | Statistical analysis, KPI formulation, insight generation                | [@acboss1346](https://github.com/acboss1346)                 |
+| **Parthraj Singh**  | Visualization Lead       | Dashboard design, UI/UX optimization, chart selection                    | [@parthrajsinghbhati](https://github.com/parthrajsinghbhati) |
+| **Pankaj Baid**     | Business Strategist      | Market analysis, recommendation framework, business case                 | [@pankajbaid567](https://github.com/pankajbaid567)           |
+| **Krishna Verma**   | QA & Documentation       | Testing protocols, technical documentation                               | [@krishnaverma09](https://github.com/krishnaverma09)         |
 
 ---
 
@@ -78,225 +79,74 @@ This question guided our analytical framework and dashboard design, focusing on:
 
 ### Technical Profile
 
-| Attribute              | Raw Dataset                  | Cleaned Dataset                    |
-| ---------------------- | ---------------------------- | ---------------------------------- |
-| **Records**            | ~10,000 transactions         | 6,658 validated transactions       |
-| **Columns**            | 8 fields                     | 9 fields (added Transaction Month) |
-| **File Format**        | CSV (UTF-8)                  | CSV (UTF-8)                        |
-| **Data Type**          | Transactional (event-level)  | Transactional (event-level)        |
-| **Temporal Scope**     | January 2023 – December 2023 | January 2023 – December 2023       |
-| **Data Quality**       | Raw/Uncleaned                | Production-ready                   |
-| **Null Values**        | 1,247 instances              | 0 instances                        |
-| **Duplicates**         | 87 exact matches             | 0 duplicates                       |
-| **Financial Accuracy** | 23% miscalculated            | 100% verified                      |
+
+| Attribute              | Raw Dataset                   | Cleaned Dataset                    |
+| ---------------------- | ----------------------------- | ---------------------------------- |
+| **Records**            | ~10,000 transactions          | 6,658 validated transactions       |
+| **Columns**            | 8 fields                      | 9 fields (added Transaction Month) |
+| **File Format**        | CSV (UTF-8)                   | CSV (UTF-8)                        |
+| **Data Type**          | Transactional (event-level)   | Transactional (event-level)        |
+| **Temporal Scope**     | January 2023 – December 2023 | January 2023 – December 2023      |
+| **Data Quality**       | Raw/Uncleaned                 | Production-ready                   |
+| **Null Values**        | 1,247 instances               | 0 instances                        |
+| **Duplicates**         | 87 exact matches              | 0 duplicates                       |
+| **Financial Accuracy** | 23% miscalculated             | 100% verified                      |
 
 ### Schema Definition
 
-| Column              | Data Type          | Description                       | Example Values                    |
-| ------------------- | ------------------ | --------------------------------- | --------------------------------- |
-| `transaction_id`    | String (ID)        | Unique transaction identifier     | TXN_1961373                       |
-| `item`              | Categorical        | Product purchased                 | Coffee, Sandwich, Salad           |
-| `quantity`          | Numeric (Integer)  | Units purchased                   | 1, 2, 3, 4, 5                     |
-| `unit_price`        | Numeric (Currency) | Price per unit in USD             | $1.00, $2.00, $5.00               |
+
+| Column              | Data Type          | Description                        | Example Values                    |
+| ------------------- | ------------------ | ---------------------------------- | --------------------------------- |
+| `transaction_id`    | String (ID)        | Unique transaction identifier      | TXN_1961373                       |
+| `item`              | Categorical        | Product purchased                  | Coffee, Sandwich, Salad           |
+| `quantity`          | Numeric (Integer)  | Units purchased                    | 1, 2, 3, 4, 5                     |
+| `unit_price`        | Numeric (Currency) | Price per unit in USD              | $1.00, $2.00, $5.00               |
 | `total_spent`       | Numeric (Currency) | Transaction revenue (qty × price) | $4.00, $12.00, $25.00             |
-| `payment_method`    | Categorical        | Payment type                      | Cash, Credit Card, Digital Wallet |
-| `location`          | Categorical        | Transaction channel               | In-store, Takeaway                |
-| `transaction_date`  | Date (YYYY-MM)     | Transaction period                | 2023-01, 2023-06, 2023-12         |
-| `transaction_month` | Categorical        | Human-readable month              | January, June, December           |
+| `payment_method`    | Categorical        | Payment type                       | Cash, Credit Card, Digital Wallet |
+| `location`          | Categorical        | Transaction channel                | In-store, Takeaway                |
+| `transaction_date`  | Date (YYYY-MM)     | Transaction period                 | 2023-01, 2023-06, 2023-12         |
+| `transaction_month` | Categorical        | Human-readable month               | January, June, December           |
 
 ---
 
 ## Data Engineering Pipeline
 
-### Methodology Overview
+### Overview
 
-Our cleaning process followed a **7-stage validation framework** designed to maximize data retention while ensuring analytical integrity:
-
-```
-Raw Data Ingestion
-    ↓
-Structural Standardization
-    ↓
-Text Normalization
-    ↓
-Placeholder Removal
-    ↓
-Numeric Validation
-    ↓
-Financial Recalculation
-    ↓
-Logical Filtering
-    ↓
-Duplicate Detection
-    ↓
-Analytics-Ready Dataset
-```
-
-### Stage 1: Structural Standardization
-
-**Objective**: Ensure compatibility with SQL and BI tools
-
-**Actions**:
-
-- Converted column names to `lowercase_snake_case`
-- Removed special characters and spaces
-- Applied consistent naming conventions
-
-**Example**:
+The raw dataset underwent a rigorous **7-stage validation framework** to transform 10,000 dirty records into 6,658 production-ready transactions:
 
 ```
-Before: "Payment Method", "Price Per Unit"
-After:  "payment_method", "price_per_unit"
+Raw Data → Standardization → Normalization → Validation → 
+Recalculation → Filtering → Deduplication → Analytics-Ready
 ```
 
-**Impact**: Enables automated ingestion into databases and analytics platforms
+### Key Transformations
 
----
 
-### Stage 2: Text Normalization
+| Stage                          | Objective                       | Impact                                            |
+| ------------------------------ | ------------------------------- | ------------------------------------------------- |
+| **Structural Standardization** | SQL/BI compatibility            | Converted columns to`lowercase_snake_case`        |
+| **Text Normalization**         | Eliminate whitespace duplicates | Unified 37 phantom categories                     |
+| **Placeholder Removal**        | Remove system artifacts         | Eliminated 1,089 corrupted records                |
+| **Numeric Validation**         | Ensure mathematical validity    | Fixed 312 type/value issues                       |
+| **Financial Recalculation**    | Guarantee revenue accuracy      | Corrected 2,301 miscalculations (23% → 0% error) |
+| **Logical Filtering**          | Remove impossible transactions  | Eliminated 1,164 invalid records                  |
+| **Duplicate Detection**        | Prevent revenue inflation       | Removed 87 duplicate transactions                 |
 
-**Objective**: Eliminate hidden whitespace causing category duplication
+### Quality Certification
 
-**Actions**:
 
-- Trimmed leading/trailing whitespace
-- Standardized capitalization (Title Case for categorical values)
-- Unified categorical labels
+| Quality Check       | Status            | Details                             |
+| ------------------- | ----------------- | ----------------------------------- |
+| Null Values         | **✓ Passed**     | 0 nulls in critical fields          |
+| Financial Accuracy  | **✓ Verified**   | 100% revenue calculations validated |
+| Logical Constraints | **✓ Enforced**   | All quantities and prices > 0       |
+| Duplicates          | **✓ Eliminated** | 0 duplicate transactions            |
+| Schema Compliance   | **✓ Validated**  | All columns match expected types    |
 
-**Example**:
+**Result**: Production-ready dataset with 100% financial accuracy
 
-```
-Before: " Cash ", "cash", "CASH  "
-After:  "Cash"
-```
-
-**Impact**: Prevented 37 false category duplicates in payment methods and items
-
----
-
-### Stage 3: Placeholder & Corrupted Value Removal
-
-**Objective**: Remove non-transactional system artifacts
-
-**Actions**:
-
-- Identified and removed: `ERROR`, `Unknown`, `nan`, `null`, `N/A`
-- Applied distribution-based imputation for recoverable missing values
-- Removed records with critical missing fields (transaction_id, item)
-
-**Example**:
-
-```
-Removed: {item: "ERROR", payment_method: "Unknown"}
-Imputed: {payment_method: null → "Cash"} (based on 42% cash distribution)
-```
-
-**Impact**: Eliminated 1,089 corrupted records while preserving 1,158 via imputation
-
----
-
-### Stage 4: Numeric Validation
-
-**Objective**: Ensure all monetary and quantity fields are mathematically valid
-
-**Actions**:
-
-- Validated `quantity` and `unit_price` as positive numbers
-- Removed records with zero or negative values
-- Converted string representations to proper numeric types
-- Imputed missing quantities using item-specific median values
-
-**Validation Rules**:
-
-```python
-quantity > 0
-unit_price > 0
-is_numeric(quantity) == True
-is_numeric(unit_price) == True
-```
-
-**Impact**: Fixed 312 records with numeric type issues
-
----
-
-### Stage 5: Financial Recalculation
-
-**Objective**: Guarantee 100% revenue calculation accuracy
-
-**Actions**:
-
-- Recalculated all `total_spent` values using the formula:
-  ```
-  total_spent = quantity × unit_price
-  ```
-- Compared recalculated values against original
-- Flagged discrepancies for manual review
-- Replaced incorrect values with validated calculations
-
-**Verification Results**:
-
-- **Original dataset**: 2,301 miscalculated transactions (23%)
-- **After recalculation**: 0 discrepancies (100% accuracy)
-
-**Impact**: Ensured financial KPIs are trustworthy for executive reporting
-
----
-
-### Stage 6: Logical Filtering
-
-**Objective**: Remove impossible transactions
-
-**Actions**:
-
-- Filtered out records where `quantity ≤ 0` or `unit_price ≤ 0`
-- Removed transactions with future dates (beyond dataset period)
-- Validated price ranges against known menu items
-
-**Removed**:
-
-```
-Example: {quantity: -2, unit_price: $5.00}
-Example: {quantity: 3, unit_price: $0.00}
-```
-
-**Impact**: Eliminated 1,164 logically impossible records
-
----
-
-### Stage 7: Duplicate Detection & Removal
-
-**Objective**: Prevent revenue inflation from duplicate entries
-
-**Actions**:
-
-- Identified exact duplicates across all fields
-- Removed duplicates, keeping first occurrence
-- Validated uniqueness of `transaction_id`
-
-**Method**:
-
-```python
-duplicates = df.duplicated(keep='first')
-df_cleaned = df.drop_duplicates()
-```
-
-**Impact**: Removed 87 duplicate transactions totaling $1,243 in inflated revenue
-
----
-
-### Data Quality Certification
-
-| Quality Check                  | Status           | Details                                      |
-| ------------------------------ | ---------------- | -------------------------------------------- |
-| Null Values in Critical Fields | **Passed**       | 0 nulls in transaction_id, item, total_spent |
-| Financial Accuracy             | **Verified**     | 100% of revenue calculations validated       |
-| Numeric Constraints            | **Enforced**     | All quantities and prices > 0                |
-| Date Format Consistency        | **Standardized** | All dates in YYYY-MM format                  |
-| Categorical Integrity          | **Clean**        | No placeholder or corrupted values           |
-| Duplicate Records              | **Eliminated**   | 0 duplicate transactions                     |
-| Schema Compliance              | **Validated**    | All columns match expected data types        |
-
-**Final Verdict**: **Production-Ready for Enterprise BI**
+📄 **Full Cleaning Methodology**: [Complete data cleaning documentation](CleanedDataset/data_cleaning_report.md)
 
 ---
 
@@ -332,8 +182,6 @@ Our dashboard tracks 12 strategic metrics across 4 analytical dimensions:
 
 13. **In-Store vs Takeaway Split**: Channel preference analysis
 14. **Location Revenue Contribution**: Sales distribution by service type
-
-
 
 ---
 
@@ -378,12 +226,13 @@ Project Root
 ## 📊 Pivot Table Calculation Documentation
 
 A detailed explanation of how all pivot tables were created, including:
+
 - Fields used
 - Aggregation logic
 - KPI calculation methods
 - Business reasoning
 
-📄 **View Full Documentation:**  
+📄 **View Full Documentation:**
 [Pivot Calculation Methodology](Calculations_PivotTables/calculations.md)
 
 ---
@@ -503,9 +352,9 @@ This project demonstrates how structured analytics can transform operational dat
 
 ### Project Lead
 
-**Shaik Tajuddin**  
-Email: shaik.tajuddin2024@nst.rishihood.edu.in  
-GitHub: [@Taj-2005](https://github.com/Taj-2005)  
+**Shaik Tajuddin**
+Email: shaik.tajuddin2024@nst.rishihood.edu.in
+GitHub: [@Taj-2005](https://github.com/Taj-2005)
 LinkedIn: [Connect for collaboration](https://www.linkedin.com/in/tajuddinshaik786)
 
 ### Team Repository
@@ -524,9 +373,9 @@ We welcome feedback, suggestions, and academic collaboration:
 
 ## License & Usage
 
-**License Type**: Academic Use Only  
-**Institution**: Rishihood University  
-**Course**: Data Visualization & Analytics Capstone Project  
+**License Type**: Academic Use Only
+**Institution**: Rishihood University
+**Course**: Data Visualization & Analytics Capstone Project
 **Academic Year**: 2024-2025
 
 ### Usage Terms
@@ -570,7 +419,7 @@ https://github.com/Taj-2005/SectionA_Group17_Cafe_Sales
 
 <div align="center">
 
-**Food & Beverage Analytics Dashboard**  
+**Food & Beverage Analytics Dashboard**
 _Transforming Data into Decisions_
 
 **Group 17 | Newton School of Technology | 2025**
