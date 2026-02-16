@@ -1,222 +1,258 @@
-# 🧹 Data Cleaning Documentation  
-## Cafe Sales – Final Strict Clean Version
+**Data** **Cleaning** **Documentation**
 
----
+**Capstone** **G17** **Transaction** **Dataset** **Dataset**
 
-# 📌 Overview
+**1.** **Objective**
 
-This document outlines the complete step-by-step data cleaning process applied to the dataset:
+The primary objective of this data cleaning process was to transform the
+raw transactional dataset into a reliable, consistent, and
+analysis-ready format suitable for business intelligence and dashboard
+development.
 
-**Cafe Sales – Dirty Data for Cleaning Training**
+The original dataset contained approximately 10,000 transaction records.
+However, it included multiple data quality issues such as missing
+values, inconsistent formatting, invalid numeric entries, placeholder
+values, and duplicate records. These issues could negatively impact
+analytical accuracy, distort key performance indicators (KPIs), and lead
+to incorrect business insights.
 
-The goal of this cleaning process was to produce a fully analysis-ready dataset with:
+The cleaning process focused on improving data integrity, ensuring
+logical consistency, and preserving maximum valid data while removing or
+correcting corrupted records.
 
-- No null values
-- No "UNKNOWN" or "ERROR" placeholders
-- No logical inconsistencies
-- No duplicate records
-- Correct revenue calculations
-- Properly formatted date fields
+**2.** **Column** **Name** **Standardization**
 
-The final dataset is stored as:
+Column names were standardized to ensure structural consistency and
+compatibility with analytical workflows.
 
-```
-cleaned_cafe_sales_strict.csv
-```
+Issues observed included inconsistent naming formats, mixed
+capitalization, and spaces in column names. These inconsistencies can
+cause errors during data processing and make data handling inefficient.
 
----
+Column names were standardized using the following principles:
 
-# 🔍 Step-by-Step Cleaning Process
+> ● Converted all names to lowercase
+>
+> ● Removed unnecessary spaces
+>
+> ● Used underscores for separation
 
----
+This ensured uniform naming conventions and improved usability for
+analysis and visualization.
 
-## ✅ Step 1: Standardize Column Names
+**3.** **Removal** **of** **Whitespace** **and** **Text**
+**Normalization**
 
-### What was done:
-- Removed leading/trailing spaces
-- Converted all column names to lowercase
-- Replaced spaces with underscores
+Several categorical fields, including item, payment_method, and
+location, contained leading and trailing whitespace.
 
-### Example:
-```
-"Transaction Date" → "transaction_date"
-"Total Spent" → "total_spent"
-```
+Whitespace inconsistencies can result in the same category being
+interpreted as multiple distinct values, leading to incorrect
+aggregation and misleading analytical results.
 
-### Why:
-- Prevents coding errors
-- Ensures consistency across analysis tools
-- Improves readability
+For example:
 
----
+> ● "Cash" and " Cash " would be treated as different categories
 
-## ✅ Step 2: Trim Whitespace from Text Fields
+Whitespace normalization ensured that categorical values were consistent
+and properly grouped during analysis.
 
-### What was done:
-- Removed extra spaces before and after text values
+**4.** **Handling** **of** **Invalid** **Placeholder** **and**
+**Corrupted** **Values**
 
-### Example:
-```
-" Cash " → "Cash"
-```
+The dataset contained non-informative placeholder values such as:
 
-### Why:
-- Prevents incorrect grouping in dashboards
-- Avoids duplicate categories caused by spacing issues
+> ● ERROR
+>
+> ● Unknown
+>
+> ● nan
+>
+> ● null
 
----
+These values do not represent valid business transactions and can
+disrupt categorical analysis and reporting.
 
-## ✅ Step 3: Remove All Dirty Placeholder Values
+These placeholders were systematically identified and replaced with
+valid
 
-The following placeholder values were converted to NULL and removed:
+business-appropriate categories or removed where necessary. This ensured
+that all categorical fields represented meaningful and analyzable
+information.
 
-```
-UNKNOWN
-Unknown
-unknown
-ERROR
-Error
-error
-NULL
-null
-None
-nan
-(empty strings)
-```
+This step improved categorical data integrity and ensured accurate
+grouping and filtering.
 
-### Why:
-- These are not valid business data
-- They distort KPI calculations
-- They create misleading category groups
+**5.** **Numeric** **Data** **Validation** **and** **Correction**
 
----
+The quantity and price_per_unit fields are critical financial variables
+that directly influence revenue calculations.
 
-## ✅ Step 4: Convert Numeric Columns Properly
+Issues identified included:
 
-The following columns were converted to numeric format:
+> ● Missing numeric values
+>
+> ● Improperly formatted numeric entries
+>
+> ● Zero or invalid values
 
-- `quantity`
-- `price_per_unit`
-- `total_spent`
+To preserve valid records and maintain statistical consistency, missing
+numeric values were handled using appropriate imputation techniques
+rather than deleting entire records.
 
-Invalid numeric entries were coerced into null and removed.
+This ensured:
 
-### Why:
-- Prevents calculation errors
-- Ensures accurate revenue metrics
-- Removes text-based corruption in numeric columns
+> ● Logical completeness of financial data
+>
+> ● Prevention of calculation errors
+>
+> ● Preservation of dataset size and analytical coverage
 
----
+Ensuring numeric integrity is essential for accurate revenue analysis
+and KPI computation.
 
-## ✅ Step 5: Standardize Date Format
+**6.** **Revenue** **Consistency** **and** **Recalculation**
 
-### What was done:
-- Converted `transaction_date` to proper datetime format
-- Removed invalid or corrupted dates
+The total_spent field represents transaction revenue and must logically
+align with quantity and price_per_unit.
 
-### Why:
-- Required for year-wise and monthly KPI analysis
-- Ensures accurate time-based trend analysis
+Data inconsistencies were identified where revenue values did not
+correctly correspond with the associated quantity and unit price.
 
----
+To ensure financial accuracy, revenue values were recalculated based on
+validated quantity and price values.
 
-## ✅ Step 6: Remove All Rows with Null Values
+This ensured:
 
-### What was done:
-- Any row containing null values was completely removed
+> ● Financial consistency across all transactions
+>
+> ● Accurate total revenue calculation
+>
+> ● Reliable KPI and performance metrics
 
-### Why:
-- Ensures 100% completeness
-- Prevents dashboard errors
-- Maintains strict analytical integrity
+This step was critical to maintaining financial data integrity.
 
----
+**7.** **Handling** **Missing** **Categorical** **Values**
 
-## ✅ Step 7: Remove Logical Data Errors
+Categorical fields such as location and payment_method contained missing
+entries.
 
-The following invalid records were removed:
+Instead of removing these records entirely, missing categorical values
+were replaced with valid existing categories based on realistic business
+distribution.
 
-- Quantity ≤ 0
-- Price per unit ≤ 0
-- Negative revenue
-- Corrupt financial records
+This approach was selected because:
 
-### Why:
-- Business transactions cannot have negative quantity
-- Prevents distorted revenue values
-- Maintains financial accuracy
+> ● The transaction itself remained valid
+>
+> ● Only categorical classification was missing
+>
+> ● Removing such records would unnecessarily reduce dataset size
 
----
+This method preserved valuable transactional data while maintaining
+categorical consistency.
 
-## ✅ Step 8: Recalculate Revenue
+**8.** **Removal** **of** **Logically** **Invalid** **Records**
 
-Revenue was strictly recalculated using:
+Certain records contained logically impossible values, such as:
 
-```
-total_spent = quantity × price_per_unit
-```
+> ● Quantity equal to zero
+>
+> ● Price per unit equal to zero or negative
 
-### Why:
-- Ensures consistency
-- Fixes discrepancies in dirty dataset
-- Guarantees reliable financial KPIs
+These values do not represent valid business transactions and could
+distort revenue calculations and analytical outcomes.
 
----
+Such records were removed to ensure that the dataset reflected only
+legitimate and meaningful transactions.
 
-## ✅ Step 9: Remove Duplicate Records
+This step ensured logical validity and analytical accuracy.
 
-Exact duplicate rows were removed.
+**9.** **Standardization** **of** **Date** **Format**
 
-### Why:
-- Prevents inflated revenue
-- Ensures transactional accuracy
+The transaction_date field contained inconsistent and improperly
+formatted date values.
 
----
+Date standardization ensured that all transaction dates were recognized
+as valid date-time values, enabling accurate time-based analysis such
+as:
 
-# 📊 Final Dataset Quality Assurance
+> ● Monthly sales trends
+>
+> ● Year-wise performance analysis
+>
+> ● Seasonal and temporal insights
 
-After strict cleaning:
+Proper date formatting is essential for time-series analysis and
+business reporting.
 
-| Validation Check | Status |
-|------------------|--------|
-| Null values | ❌ None |
-| UNKNOWN values | ❌ None |
-| ERROR values | ❌ None |
-| Duplicate rows | ❌ None |
-| Negative quantities | ❌ None |
-| Invalid dates | ❌ None |
-| Revenue accuracy | ✅ Verified |
+**10.** **Duplicate** **Record** **Identification** **and** **Removal**
 
----
+Duplicate transaction records were identified within the dataset.
 
-# 📈 Dataset Status
+Duplicate records can significantly distort analysis by:
 
-The final dataset is:
+> ● Inflating revenue calculations
+>
+> ● Increasing transaction counts artificially
+>
+> ● Creating inaccurate business metrics
 
-✔ Fully cleaned  
-✔ Business-ready  
-✔ Dashboard-ready  
-✔ KPI-ready  
-✔ Analysis-ready  
+Duplicate entries were removed to ensure that each transaction was
+uniquely represented.
 
----
+This ensured transactional integrity and analytical reliability.
 
-# 🎯 Suitable For
+**11.** **Final** **Data** **Validation** **and** **Quality**
+**Assurance**
 
-- Power BI Dashboards
-- Tableau Reports
-- Excel Pivot Analysis
-- Revenue Trend Analysis
-- Payment Method Insights
-- Item Performance Evaluation
-- Time-Series Sales Analysis
+Following the cleaning process, the dataset underwent comprehensive
+validation to ensure:
 
----
+> ● No invalid placeholder values remained
+>
+> ● No missing or blank critical fields existed
+>
+> ● All numeric values were logically valid
+>
+> ● Categorical values were consistent
+>
+> ● No duplicate records remained
+>
+> ● Revenue values were accurate and consistent
 
-# 📂 Final File
+This validation ensured high data quality and analytical readiness.
 
-```
-cleaned_cafe_sales_strict.csv
-```
+**12.** **Final** **Outcome**
 
-This is the final production-grade cleaned dataset.
+The data cleaning process significantly improved the overall quality,
+consistency, and reliability of the dataset.
+
+Key improvements achieved:
+
+> ● Removal of invalid and corrupted records
+>
+> ● Correction of numeric and financial inconsistencies
+>
+> ● Standardization of categorical and date values
+>
+> ● Elimination of duplicate transactions
+>
+> ● Preservation of valid transactional data
+
+The final cleaned dataset contains 6,658 valid transaction records and
+is fully prepared for business analysis, dashboard creation, and KPI
+reporting.
+
+**13.** **Conclusion**
+
+Through systematic data cleaning and validation, the dataset was
+transformed from a raw, inconsistent state into a structured and
+reliable analytical dataset.
+
+The cleaning process ensured data integrity, financial accuracy, and
+analytical consistency, enabling accurate business insights and reliable
+decision-making.
+
+The dataset is now fully suitable for advanced analysis, visualization,
+and business intelligence applications.
