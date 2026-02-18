@@ -5,7 +5,7 @@
 [![Project Status](https://img.shields.io/badge/Status-Completed-success)]()
 [![Data Quality](https://img.shields.io/badge/Data%20Quality-Production%20Ready-brightgreen)]()
 [![License](https://img.shields.io/badge/License-Academic-blue)]()
-
+![alt text](Dashboard/dashboard.png)
 ---
 
 ## Executive Summary
