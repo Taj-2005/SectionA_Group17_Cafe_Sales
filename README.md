@@ -40,6 +40,24 @@ A complete **data-to-insights pipeline** that delivers:
 - **Actionable KPIs** for menu optimization, payment strategy, and demand forecasting
 - **Reproducible methodology** ensuring audit-ready data lineage
 
+
+## Live Google Sheets Workbook
+
+Access the complete working dataset, cleaning steps, pivot tables, and dashboard calculations directly:
+
+👉 **[Google Sheets Link](https://docs.google.com/spreadsheets/d/1M9aOmB9KD4Q6fXpM5JKxun5t17uY0MwkEOT50Wdsi0I)**  
+
+
+This sheet contains:
+
+- Cleaned dataset
+- KPI calculations
+- Pivot tables
+- Revenue analysis
+- Dashboard source charts
+
+The repository CSV files are exported snapshots of this live workbook.
+
 ---
 
 ## Research Question
